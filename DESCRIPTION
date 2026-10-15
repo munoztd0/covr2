@@ -1,7 +1,7 @@
 Encoding: UTF-8
 Package: covr2
-Title: Test Coverage for Packages
-Version: 4.0.0
+Title: Test Coverage for Packages that works
+Version: 1.0.0
 Authors@R: c(
     person("David", "Munoz Tord", email = "david.munoztord@mailbox.org", role = c("cre")),
     person("Jim", "Hester", email = "james.f.hester@gmail.com", role = c("aut")),
