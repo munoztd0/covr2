@@ -1,4 +1,4 @@
-#' @useDynLib covr, .registration = TRUE
+#' @useDynLib covr2, .registration = TRUE
 replacement <- function(name, env = as.environment(-1), target_value = get(name, envir = env)) {
   if (is.function(target_value) && !is.primitive(target_value)) {
     if (is_vectorized(target_value)) {
