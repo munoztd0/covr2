@@ -29,7 +29,7 @@
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/munoztd0/covr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/munoztd0/covr2/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -38,18 +38,18 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/munoztd0/covr/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/munoztd0/covr2/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="covr2-development-version">covr2 (development version)<a class="anchor" aria-label="anchor" href="#covr2-development-version"></a></h2>
-<ul><li><p>Fix a generational garbage-collection bug when replacing traced functions in place, without permanently retaining their bodies or environments (<a href="https://github.com/munoztd0/covr/issues/640" class="external-link">#640</a>).</p></li>
-<li><p>Tracing a package is faster, as parse data now keeps text only for terminal tokens (<a href="https://github.com/erkurtharun" class="external-link">@erkurtharun</a>, <a href="https://github.com/munoztd0/covr/issues/644" class="external-link">#644</a>).</p></li>
-<li><p><code>merge_coverage()</code> is much faster for packages with many traces (<a href="https://github.com/erkurtharun" class="external-link">@erkurtharun</a>, <a href="https://github.com/munoztd0/covr/issues/643" class="external-link">#643</a>).</p></li>
-<li><p>With <code>options(covr.record_tests = TRUE)</code>, merging coverage now correctly renumbers the test indices of traces that are absent from the first coverage object (<a href="https://github.com/munoztd0/covr/issues/643" class="external-link">#643</a>).</p></li>
+<ul><li><p>Fix a generational garbage-collection bug when replacing traced functions in place, without permanently retaining their bodies or environments (<a href="https://github.com/munoztd0/covr2/issues/640" class="external-link">#640</a>).</p></li>
+<li><p>Tracing a package is faster, as parse data now keeps text only for terminal tokens (<a href="https://github.com/erkurtharun" class="external-link">@erkurtharun</a>, <a href="https://github.com/munoztd0/covr2/issues/644" class="external-link">#644</a>).</p></li>
+<li><p><code>merge_coverage()</code> is much faster for packages with many traces (<a href="https://github.com/erkurtharun" class="external-link">@erkurtharun</a>, <a href="https://github.com/munoztd0/covr2/issues/643" class="external-link">#643</a>).</p></li>
+<li><p>With <code>options(covr2.record_tests = TRUE)</code>, merging coverage now correctly renumbers the test indices of traces that are absent from the first coverage object (<a href="https://github.com/munoztd0/covr2/issues/643" class="external-link">#643</a>).</p></li>
 <li><p>Fix compilation of the <code>TestCompiled</code> test package on R 4.6 by using public <code>REAL()</code> and <code>INTEGER()</code> accessors instead of the non-API <code>DATAPTR()</code>.</p></li>
-<li><p>Fix a rare edge case where <code>count_test</code> was called before <code>.current_test</code> has been initialized leading to crash (<a href="https://github.com/maksymiuks" class="external-link">@maksymiuks</a>, <a href="https://github.com/munoztd0/covr/issues/631" class="external-link">#631</a>).</p></li>
-<li><p>Fix rare error in <code>clean_coverage_tests</code> where <code>NA</code> were being compared in <code>if</code> condition (<a href="https://github.com/maksymiuks" class="external-link">@maksymiuks</a>, <a href="https://github.com/munoztd0/covr/issues/631" class="external-link">#631</a>).</p></li>
+<li><p>Fix a rare edge case where <code>count_test</code> was called before <code>.current_test</code> has been initialized leading to crash (<a href="https://github.com/maksymiuks" class="external-link">@maksymiuks</a>, <a href="https://github.com/munoztd0/covr2/issues/631" class="external-link">#631</a>).</p></li>
+<li><p>Fix rare error in <code>clean_coverage_tests</code> where <code>NA</code> were being compared in <code>if</code> condition (<a href="https://github.com/maksymiuks" class="external-link">@maksymiuks</a>, <a href="https://github.com/munoztd0/covr2/issues/631" class="external-link">#631</a>).</p></li>
 </ul></div>
   </main></div>
 

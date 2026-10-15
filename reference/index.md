@@ -17,7 +17,7 @@
   : Convert a coverage dataset to a list
 - [`coveralls()`](https://munoztd0.github.io/covr2/reference/coveralls.md)
   : Run covr on a package and upload the result to coveralls
-- [`covr.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md)
+- [`covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md)
   : Record Test Traces During Coverage Execution
 - [`covr2`](https://munoztd0.github.io/covr2/reference/covr2-package.md)
   [`covr2-package`](https://munoztd0.github.io/covr2/reference/covr2-package.md)

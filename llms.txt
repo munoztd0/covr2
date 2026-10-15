@@ -11,7 +11,7 @@ or [coveralls](https://coveralls.io/).
 install.packages("covr2")
 
 # For devel version
-devtools::install_github("munoztd0/covr2")
+devtools::install_github("munoztd0/covr22")
 ```
 
 ``` r
@@ -27,7 +27,7 @@ for each line in your package. *Note* requires the
 
 ``` r
 
-library(covr)
+library(covr2)
 
 # If run with no arguments implicitly calls `package_coverage()`
 report()
@@ -62,7 +62,7 @@ zero_coverage(cov)
 
 # Exclusions
 
-`covr` supports a few of different ways of excluding some or all of a
+`covr2` supports a few of different ways of excluding some or all of a
 file.
 
 ## .covrignore file
@@ -76,7 +76,7 @@ globs to ignore. It uses the globbing rules in
 listed will ignore all the files in the directory.
 
 Alternative locations for the file can be set by the environment
-variable `COVR_COVRIGNORE` or the R option `covr.covrignore`.
+variable `COVR_COVRIGNORE` or the R option `covr2.covrignore`.
 
 The `.covrignore` file should be added to your `.RBuildignore` file
 unless you want to distribute it with your package. If so it can be
@@ -141,7 +141,7 @@ f2 <- function(x) { # nocov start
 ```
 
 The patterns used can be specified by setting the global options
-`covr.exclude_pattern`, `covr.exclude_start`, `covr.exclude_end`.
+`covr2.exclude_pattern`, `covr2.exclude_start`, `covr2.exclude_end`.
 
 NB: The same pattern applies to exclusions in the `src` folder, so
 skipped lines in, e.g., C code (where comments can start with `//`)
@@ -163,12 +163,12 @@ Qin Wang at Oracle.
 Covr is known to work with clang versions `3.5+` and gcc version `4.2+`.
 
 If the appropriate gcov version is not on your path you can set the
-appropriate location with the `covr.gcov` options. If you set this path
+appropriate location with the `covr2.gcov` options. If you set this path
 to “” it will turn *off* coverage of compiled code.
 
 ``` r
 
-options(covr.gcov = "path/to/gcov")
+options(covr2.gcov = "path/to/gcov")
 ```
 
 ## How does covr work?
@@ -177,7 +177,7 @@ options(covr.gcov = "path/to/gcov")
 tracking calls to each call.
 
 The vignette
-[vignettes/how_it_works.Rmd](https://github.com/munoztd0/covr/blob/master/vignettes/how_it_works.Rmd)
+[vignettes/how_it_works.Rmd](https://github.com/munoztd0/covr2/blob/master/vignettes/how_it_works.Rmd)
 contains a detailed explanation of the technique and the rationale
 behind it.
 
@@ -206,7 +206,7 @@ which are masked with higher optimization levels).
 
 Please note that the covr project is released with a [Contributor Code
 of
-Conduct](https://github.com/munoztd0/covr/blob/main/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/munoztd0/covr2/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
 # Package index
@@ -228,7 +228,7 @@ By contributing to this project, you agree to abide by its terms.
   : Convert a coverage dataset to a list
 - [`coveralls()`](https://munoztd0.github.io/covr2/reference/coveralls.md)
   : Run covr on a package and upload the result to coveralls
-- [`covr.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md)
+- [`covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md)
   : Record Test Traces During Coverage Execution
 - [`covr2`](https://munoztd0.github.io/covr2/reference/covr2-package.md)
   [`covr2-package`](https://munoztd0.github.io/covr2/reference/covr2-package.md)

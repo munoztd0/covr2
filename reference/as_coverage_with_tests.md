@@ -1,6 +1,6 @@
 # Clean and restructure counter tests for a coverage object
 
-For tests produced with `options(covr.record_tests)`, prune any unused
+For tests produced with `options(covr2.record_tests)`, prune any unused
 records in the \$tests\$tally matrices of each trace and get rid of the
 wrapping \$tests environment (reassigning with value of \$tests\$tally)
 

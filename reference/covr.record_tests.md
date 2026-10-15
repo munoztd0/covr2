@@ -1,6 +1,6 @@
 # Record Test Traces During Coverage Execution
 
-By setting `options(covr.record_tests = TRUE)`, the result of covr
+By setting `options(covr2.record_tests = TRUE)`, the result of covr
 coverage collection functions will include additional data pertaining to
 the tests which are executed and an index of which tests, at what stack
 depth, trigger the execution of each trace.
@@ -35,20 +35,18 @@ available information in the sources kept for the testing files.
 
 Test traces are extracted by the following criteria:
 
-1.  If any `srcref` files are are provided by a file within
-    [covr](http://covr.r-lib.org/reference/covr-package.md)'s temporary
-    library, all calls from those files are kept as a test trace. This
-    will collect traces from tests run with common testing frameworks
-    such as `testthat` and `RUnit`.
+1.  If any `srcref` files are are provided by a file within covr's
+    temporary library, all calls from those files are kept as a test
+    trace. This will collect traces from tests run with common testing
+    frameworks such as `testthat` and `RUnit`.
 
 2.  Otherwise, as a conservative fallback in situations where no source
     references are found, or when none are from within the temporary
     directory, the entire call stack is collected.
 
 These calls are subsequently subset for only those up until the call to
-[covr](http://covr.r-lib.org/reference/covr-package.md)'s internal
-`count` function, and will always include the last call in the call
-stack prior to a call to `count`.
+covr's internal `count` function, and will always include the last call
+in the call stack prior to a call to `count`.
 
 ## Examples
 
@@ -61,7 +59,7 @@ f <- function(x) {
     FALSE
 }'
 
-options(covr.record_tests = TRUE)
+options(covr2.record_tests = TRUE)
 cov <- code_coverage(fcode, "f(TRUE)")
 
 # extract executed test code for the first test
@@ -73,12 +71,11 @@ tail(attr(cov, "tests")[[1L]], 1L)
 # extract test itemization per trace
 cov[[3]][c("srcref", "tests")]
 #> $srcref
-#> x
+#> f(!x)
 #> 
 #> $tests
 #>      test call depth  i
 #> [1,]   NA   NA    NA NA
-#> [2,]   NA   NA    NA NA
 #> 
 # $srcref
 # f(!x)
@@ -89,18 +86,18 @@ cov[[3]][c("srcref", "tests")]
 
 # reconstruct the code path of a test by ordering test traces by [,"i"]
 lapply(cov, `[[`, "tests")
-#> $`source.R19ef7baca75a:4:5:4:9:5:9:4:4`
+#> $`source.R19341e24224d:6:5:6:9:5:9:6:6`
 #>      test call depth  i
 #> [1,]   NA   NA    NA NA
 #> 
-#> $`source.R19ef7baca75a:6:5:6:9:5:9:6:6`
-#>      test call depth  i
-#> [1,]   NA   NA    NA NA
-#> 
-#> $`source.R19ef7baca75a:3:7:3:7:7:7:3:3`
+#> $`source.R19341e24224d:3:7:3:7:7:7:3:3`
 #>      test call depth  i
 #> [1,]   NA   NA    NA NA
 #> [2,]   NA   NA    NA NA
+#> 
+#> $`source.R19341e24224d:4:5:4:9:5:9:4:4`
+#>      test call depth  i
+#> [1,]   NA   NA    NA NA
 #> 
 # $`source.Ref2326138c55:4:6:4:10:6:10:4:4`
 #      test call depth i

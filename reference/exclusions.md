@@ -23,8 +23,8 @@ comments in your source code. This can be done per line or by specifying
 a range. The patterns used can be specified by the `exclude_pattern`,
 `exclude_start`, `exclude_end` arguments to
 [`package_coverage()`](https://munoztd0.github.io/covr2/reference/package_coverage.md)
-or by setting the global options `covr.exclude_pattern`,
-`covr.exclude_start`, `covr.exclude_end`.
+or by setting the global options `covr2.exclude_pattern`,
+`covr2.exclude_start`, `covr2.exclude_end`.
 
 ## Examples
 

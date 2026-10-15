@@ -68,7 +68,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/munoztd0/covr/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/munoztd0/covr2/blob/main/DESCRIPTION)
 
 Hester J (2026). *covr2: Test Coverage for Packages*. R package version
 4.0.0, <https://munoztd0.github.io/covr2>.

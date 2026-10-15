@@ -103,7 +103,7 @@ Parallelized code using parallel's `mcparallel()` needs to use a patched
 `parallel:::mcexit`. This is done automatically if the package depends
 on parallel, but can also be explicitly set using the environment
 variable `COVR_FIX_PARALLEL_MCEXIT` or the global option
-`covr.fix_parallel_mcexit`.
+`covr2.fix_parallel_mcexit`.
 
 ## See also
 

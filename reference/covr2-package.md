@@ -24,60 +24,60 @@ requires the additional dependencies `DT` and `htmltools`.
 [`options()`](https://rdrr.io/r/base/options.html) to configure
 behaviour:
 
-- `covr.covrignore`: A filename to use as an ignore file, listing
+- `covr2.covrignore`: A filename to use as an ignore file, listing
   glob-style wildcarded paths of files to ignore for coverage
   calculations. Defaults to the value of environment variable
   `COVR_COVRIGNORE`, or `".covrignore"` if the neither the option nor
   the environment variable are set.
 
-- `covr.exclude_end`: Used along with `covr.exclude_start`, an optional
-  regular expression which ends a line-exclusion region. For more
-  details, see
+- `covr2.exclude_end`: Used along with `covr2.exclude_start`, an
+  optional regular expression which ends a line-exclusion region. For
+  more details, see
   [`?exclusions`](https://munoztd0.github.io/covr2/reference/exclusions.md).
 
-- `covr.exclude_pattern`: An optional line-exclusion pattern. Lines
+- `covr2.exclude_pattern`: An optional line-exclusion pattern. Lines
   which match the pattern will be excluded from coverage. For more
   details, see
   [`?exclusions`](https://munoztd0.github.io/covr2/reference/exclusions.md).
 
-- `covr.exclude_start`: Used along with `covr.exclude_end`, an optional
-  regular expression which starts a line-exclusion region. For more
-  details, see
+- `covr2.exclude_start`: Used along with `covr2.exclude_end`, an
+  optional regular expression which starts a line-exclusion region. For
+  more details, see
   [`?exclusions`](https://munoztd0.github.io/covr2/reference/exclusions.md).
 
-- `covr.filter_non_package`: If `TRUE` (the default behavior), coverage
+- `covr2.filter_non_package`: If `TRUE` (the default behavior), coverage
   of files outside the target package are filtered from coverage output.
 
-- `covr.fix_parallel_mcexit`:
+- `covr2.fix_parallel_mcexit`:
 
-- `covr.flags`:
+- `covr2.flags`:
 
-- `covr.gcov`: If the appropriate gcov version is not on your path you
+- `covr2.gcov`: If the appropriate gcov version is not on your path you
   can use this option to set the appropriate location. If set to "" it
   will turn off coverage of compiled code.
 
-- `covr.gcov_additional_paths`:
+- `covr2.gcov_additional_paths`:
 
-- `covr.gcov_args`:
+- `covr2.gcov_args`:
 
-- `covr.icov`:
+- `covr2.icov`:
 
-- `covr.icov_args`:
+- `covr2.icov_args`:
 
-- `covr.icov_flags`:
+- `covr2.icov_flags`:
 
-- `covr.icov_prof`:
+- `covr2.icov_prof`:
 
-- `covr.rstudio_source_markers`: A logical value. If `TRUE` (the default
-  behavior), source markers are displayed within the RStudio IDE when
-  using `zero_coverage`.
+- `covr2.rstudio_source_markers`: A logical value. If `TRUE` (the
+  default behavior), source markers are displayed within the RStudio IDE
+  when using `zero_coverage`.
 
-- `covr.record_tests`: If `TRUE` (default `NULL`), record a listing of
+- `covr2.record_tests`: If `TRUE` (default `NULL`), record a listing of
   top level test expressions and associate tests with `covr` traces
   evaluated during the test's execution. For more details, see
-  [`?covr.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md).
+  [`?covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md).
 
-- `covr.showCfunctions`:
+- `covr2.showCfunctions`:
 
 ## See also
 
@@ -85,9 +85,9 @@ Useful links:
 
 - <https://munoztd0.github.io/covr2>
 
-- <https://github.com/munoztd0/covr>
+- <https://github.com/munoztd0/covr2>
 
-- Report bugs at <https://github.com/munoztd0/covr/issues>
+- Report bugs at <https://github.com/munoztd0/covr2/issues>
 
 ## Author
 
