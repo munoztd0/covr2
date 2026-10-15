@@ -70,11 +70,11 @@
 Source:
 [`DESCRIPTION`](https://github.com/munoztd0/covr2/blob/main/DESCRIPTION)
 
-Hester J (2026). *covr2: Test Coverage for Packages that works*. R
-package version 1.0.0, <https://munoztd0.github.io/covr2>.
+Hester J (2026). *covr2: Test Coverage for Packages that*. R package
+version 1.0.0, <https://munoztd0.github.io/covr2>.
 
     @Manual{,
-      title = {covr2: Test Coverage for Packages that works},
+      title = {covr2: Test Coverage for Packages that},
       author = {Jim Hester},
       year = {2026},
       note = {R package version 1.0.0},

@@ -75,7 +75,7 @@ behaviour:
 - `covr2.record_tests`: If `TRUE` (default `NULL`), record a listing of
   top level test expressions and associate tests with `covr` traces
   evaluated during the test's execution. For more details, see
-  [`?covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md).
+  [`?covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr2.record_tests.md).
 
 - `covr2.showCfunctions`:
 

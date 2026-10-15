@@ -228,11 +228,11 @@ By contributing to this project, you agree to abide by its terms.
   : Convert a coverage dataset to a list
 - [`coveralls()`](https://munoztd0.github.io/covr2/reference/coveralls.md)
   : Run covr on a package and upload the result to coveralls
-- [`covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr.record_tests.md)
-  : Record Test Traces During Coverage Execution
 - [`covr2`](https://munoztd0.github.io/covr2/reference/covr2-package.md)
   [`covr2-package`](https://munoztd0.github.io/covr2/reference/covr2-package.md)
   : covr: Test coverage for packages
+- [`covr2.record_tests`](https://munoztd0.github.io/covr2/reference/covr2.record_tests.md)
+  : Record Test Traces During Coverage Execution
 - [`current_test_call_count()`](https://munoztd0.github.io/covr2/reference/current_test_call_count.md)
   : Retrieve the number of times the test call was called
 - [`environment_coverage()`](https://munoztd0.github.io/covr2/reference/environment_coverage.md)
