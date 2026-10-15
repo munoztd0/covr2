@@ -75,7 +75,7 @@ Parallelized code using \pkg{parallel}'s \code{\link[=mcparallel]{mcparallel()}}
 use a patched \code{parallel:::mcexit}. This is done automatically if the
 package depends on \pkg{parallel}, but can also be explicitly set using the
 environment variable \code{COVR_FIX_PARALLEL_MCEXIT} or the global option
-\code{covr.fix_parallel_mcexit}.
+\code{covr2.fix_parallel_mcexit}.
 #endif
 }
 \seealso{

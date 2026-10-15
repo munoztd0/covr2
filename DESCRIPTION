@@ -40,8 +40,8 @@ Description: Track and report code coverage for your package and (optionally)
     quality and completeness. This package is compatible with any testing
     methodology or framework and tracks coverage of both R code and compiled
     C/C++/FORTRAN code.
-URL: https://munoztd0.github.io/covr2, https://github.com/munoztd0/covr
-BugReports: https://github.com/munoztd0/covr/issues
+URL: https://munoztd0.github.io/covr2, https://github.com/munoztd0/covr2
+BugReports: https://github.com/munoztd0/covr2/issues
 Depends:
     R (>= 3.1.0),
     methods

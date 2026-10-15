@@ -163,7 +163,7 @@ test_that("it returns a normalizedPath if the file can be found", {
 
 describe("covrignore", {
   it("returns NULL if empty or no file exclusions", {
-    withr::with_options(list(covr.covrignore = ""),
+    withr::with_options(list(covr2.covrignore = ""),
       expect_equal(parse_covr_ignore(), NULL)
       )
     withr::with_envvar(list("COVR_COVRIGNORE" = ""),
@@ -172,7 +172,7 @@ describe("covrignore", {
     tf <- tempfile()
     on.exit(unlink(tf))
     writeLines("", tf)
-    withr::with_options(list(covr.covrignore = tf),
+    withr::with_options(list(covr2.covrignore = tf),
       expect_equal(parse_covr_ignore(), NULL)
       )
     withr::with_envvar(list("COVR_COVRIGNORE" = tf),

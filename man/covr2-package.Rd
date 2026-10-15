@@ -28,57 +28,57 @@ report()
 \code{covr} uses the following \code{\link[=options]{options()}} to configure behaviour:
 
 \itemize{
-\item \code{covr.covrignore}: A filename to use as an ignore file,
+\item \code{covr2.covrignore}: A filename to use as an ignore file,
 listing glob-style wildcarded paths of files to ignore for coverage
 calculations. Defaults to the value of environment variable
 \code{COVR_COVRIGNORE}, or \code{".covrignore"}  if the neither the option nor the
 environment variable are set.
 
-\item \code{covr.exclude_end}: Used along with \code{covr.exclude_start}, an optional
+\item \code{covr2.exclude_end}: Used along with \code{covr2.exclude_start}, an optional
 regular expression which ends a line-exclusion region. For more
 details, see \code{?exclusions}.
 
-\item \code{covr.exclude_pattern}: An optional line-exclusion pattern. Lines
+\item \code{covr2.exclude_pattern}: An optional line-exclusion pattern. Lines
 which match the pattern will be excluded from coverage. For more details,
 see \code{?exclusions}.
 
-\item \code{covr.exclude_start}: Used along with \code{covr.exclude_end}, an optional
+\item \code{covr2.exclude_start}: Used along with \code{covr2.exclude_end}, an optional
 regular expression which starts a line-exclusion region. For more
 details, see \code{?exclusions}.
 
-\item \code{covr.filter_non_package}: If \code{TRUE} (the default behavior), coverage
+\item \code{covr2.filter_non_package}: If \code{TRUE} (the default behavior), coverage
 of files outside the target package are filtered from coverage output.
 
-\item \code{covr.fix_parallel_mcexit}:
+\item \code{covr2.fix_parallel_mcexit}:
 
-\item \code{covr.flags}:
+\item \code{covr2.flags}:
 
-\item \code{covr.gcov}: If the appropriate gcov version is not on your path you
+\item \code{covr2.gcov}: If the appropriate gcov version is not on your path you
 can use this option to set the appropriate location. If set to "" it will
 turn off coverage of compiled code.
 
-\item \code{covr.gcov_additional_paths}:
+\item \code{covr2.gcov_additional_paths}:
 
-\item \code{covr.gcov_args}:
+\item \code{covr2.gcov_args}:
 
-\item \code{covr.icov}:
+\item \code{covr2.icov}:
 
-\item \code{covr.icov_args}:
+\item \code{covr2.icov_args}:
 
-\item \code{covr.icov_flags}:
+\item \code{covr2.icov_flags}:
 
-\item \code{covr.icov_prof}:
+\item \code{covr2.icov_prof}:
 
-\item \code{covr.rstudio_source_markers}: A logical value. If \code{TRUE} (the
+\item \code{covr2.rstudio_source_markers}: A logical value. If \code{TRUE} (the
 default behavior), source markers are displayed within the RStudio IDE
 when using \code{zero_coverage}.
 
-\item \code{covr.record_tests}: If \code{TRUE} (default \code{NULL}), record a listing of
+\item \code{covr2.record_tests}: If \code{TRUE} (default \code{NULL}), record a listing of
 top level test expressions and associate tests with \code{covr} traces
 evaluated during the test's execution. For more details, see
-\code{?covr.record_tests}.
+\code{?covr2.record_tests}.
 
-\item \code{covr.showCfunctions}:
+\item \code{covr2.showCfunctions}:
 }
 }
 
@@ -86,8 +86,8 @@ evaluated during the test's execution. For more details, see
 Useful links:
 \itemize{
   \item \url{https://munoztd0.github.io/covr2}
-  \item \url{https://github.com/munoztd0/covr}
-  \item Report bugs at \url{https://github.com/munoztd0/covr/issues}
+  \item \url{https://github.com/munoztd0/covr2}
+  \item Report bugs at \url{https://github.com/munoztd0/covr2/issues}
 }
 
 }

@@ -117,7 +117,7 @@ zero_coverage <- function(x, ...) {
         "last_column",
         "value")]
 
-  if (getOption("covr.rstudio_source_markers", TRUE) &&
+  if (getOption("covr2.rstudio_source_markers", TRUE) &&
       rstudioapi::hasFun("sourceMarkers")) {
     markers <- markers(coverage_data)
     rstudioapi::callFun("sourceMarkers",

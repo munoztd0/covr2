@@ -20,7 +20,7 @@
 #' in your source code. This can be done per line or by specifying a range.
 #' The patterns used can be specified by the `exclude_pattern`, `exclude_start`,
 #' `exclude_end` arguments to `package_coverage()` or by setting the global
-#' options `covr.exclude_pattern`, `covr.exclude_start`, `covr.exclude_end`.
+#' options `covr2.exclude_pattern`, `covr2.exclude_start`, `covr2.exclude_end`.
 
 #' @examples
 #' \dontrun{
@@ -52,9 +52,9 @@ NULL
 exclude <- function(coverage,
   line_exclusions = NULL,
   function_exclusions = NULL,
-  exclude_pattern = getOption("covr.exclude_pattern"),
-  exclude_start = getOption("covr.exclude_start"),
-  exclude_end = getOption("covr.exclude_end"),
+  exclude_pattern = getOption("covr2.exclude_pattern"),
+  exclude_start = getOption("covr2.exclude_start"),
+  exclude_end = getOption("covr2.exclude_end"),
   path = NULL) {
 
   sources <- traced_files(coverage)
@@ -101,9 +101,9 @@ exclude <- function(coverage,
 }
 
 parse_exclusions <- function(lines,
-                             exclude_pattern = getOption("covr.exclude"),
-                             exclude_start = getOption("covr.exclude_start"),
-                             exclude_end = getOption("covr.exclude_end")) {
+                             exclude_pattern = getOption("covr2.exclude"),
+                             exclude_start = getOption("covr2.exclude_start"),
+                             exclude_end = getOption("covr2.exclude_end")) {
 
   exclusions <- numeric(0)
 
@@ -212,7 +212,7 @@ remove_line_duplicates <- function(x) {
   x
 }
 
-parse_covr_ignore <- function(file = getOption("covr.covrignore", Sys.getenv("COVR_COVRIGNORE", ".covrignore"))) {
+parse_covr_ignore <- function(file = getOption("covr2.covrignore", Sys.getenv("COVR_COVRIGNORE", ".covrignore"))) {
   if (!file.exists(file)) {
     return(NULL)
   }

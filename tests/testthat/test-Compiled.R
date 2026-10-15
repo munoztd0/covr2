@@ -79,14 +79,14 @@ test_that("Compiled code coverage is reported under non-standard char's", {
 test_that("Error thrown for missing gcov", {
   skip_on_cran()
 
-  withr::local_options(covr.gcov='')
+  withr::local_options(covr2.gcov='')
   expect_snapshot(package_coverage("TestCompiled", relative_path=TRUE), error = TRUE)
 })
 
 test_that("Warning thrown for empty gcov output", {
   skip_on_cran()
 
-  withr::local_options(covr.gcov_args='-n')
+  withr::local_options(covr2.gcov_args='-n')
   expect_snapshot(
     . <- package_coverage("TestCompiled", relative_path=TRUE),
     transform = function(x) gsub(getwd(), "<wd>", x)

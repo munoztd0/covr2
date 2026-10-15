@@ -1,36 +1,36 @@
 cov_func <- withr::with_options(
-  list(covr.record_tests = TRUE),
+  list(covr2.record_tests = TRUE),
   package_coverage(test_path("TestFunctional")))
 
 cov_tests_not_recorded <- withr::with_options(
-  list(covr.record_tests = NULL),
+  list(covr2.record_tests = NULL),
   package_coverage(test_path("TestFunctional")))
 
 
-test_that("covr.record_tests causes test traces to be recorded", {
+test_that("covr2.record_tests causes test traces to be recorded", {
   expect_gt(length(attr(cov_func, "tests")), 0L)
   expect_gt(length(attr(cov_func, "tests")[[1]]), 0L)
 })
 
 
-test_that("covr.record_tests records test indices and depth for each trace", {
+test_that("covr2.record_tests records test indices and depth for each trace", {
   expect_equal(ncol(cov_func[[1]]$tests), 4L)
   expect_equal(colnames(cov_func[[1]]$tests), c("test", "call", "depth", "i"))
 })
 
 
-test_that("covr.record_tests test traces list uses srcref key names", {
+test_that("covr2.record_tests test traces list uses srcref key names", {
   expect_match(names(attr(cov_func, "tests")), "\\w+(:\\d+){4,8}")
 })
 
 
-test_that("covr.record_tests=NULL does not record tests", {
+test_that("covr2.record_tests=NULL does not record tests", {
   expect_null(attr(cov_tests_not_recorded, "tests"))
   expect_null(cov_tests_not_recorded[[1]]$tests$tally)
 })
 
 
-test_that("covr.record_tests traces to tests nested within test directory", {
+test_that("covr2.record_tests traces to tests nested within test directory", {
   cov_top_level <- withr::with_envvar(
     list(COVR_TEST_NESTED = "FALSE"),
     package_coverage(test_path("TestNestedTestDirs")))
@@ -44,7 +44,7 @@ test_that("covr.record_tests traces to tests nested within test directory", {
 })
 
 
-test_that("covr.record_tests: merging coverage objects appends tests", {
+test_that("covr2.record_tests: merging coverage objects appends tests", {
   # recreate some ".counters" objects for testing
   .counter_1 <- list(
     tests = list(
@@ -104,7 +104,7 @@ test_that("covr.record_tests: merging coverage objects appends tests", {
   expect_equal(cov_merged$`a:1:2:3:4:5:6:7:8`$tests$tally[[3L,1L]], 3L)
 })
 
-test_that("covr.record_tests: merging renumbers tests of traces only in later objects", {
+test_that("covr2.record_tests: merging renumbers tests of traces only in later objects", {
   .counter_1 <- list(
     tests = list(test1 = list(quote(a())), test2 = list(quote(b()))),
     a = list(value = 1L, tests = as.environment(list(tally = cbind(test = 1L, call = 1L, depth = 0L, i = 1L))))
@@ -121,10 +121,10 @@ test_that("covr.record_tests: merging renumbers tests of traces only in later ob
 })
 
 
-test_that("covr.record_tests: tests tally is pruned even when no tests are hit", {
+test_that("covr2.record_tests: tests tally is pruned even when no tests are hit", {
   # "test" a function, but no code is executed and therefore no tests are logged
   fcode <- 'f <- function(x) { if (x) f(!x) else FALSE }'
-  withr::with_options(c("covr.record_tests" = TRUE), cov <- code_coverage(fcode, "{ }"))
+  withr::with_options(c("covr2.record_tests" = TRUE), cov <- code_coverage(fcode, "{ }"))
 
   # expect that no tests were recorded, as no expressions evaluated f
   expect_null(attr(cov, "tests"))
@@ -136,7 +136,7 @@ test_that("covr.record_tests: tests tally is pruned even when no tests are hit",
 })
 
 
-test_that("covr.record_tests: merging coverage test objects doesn't break default tests", {
+test_that("covr2.record_tests: merging coverage test objects doesn't break default tests", {
   # recreate some ".counters" objects for testing
   .counter_1 <- list(
     `a:1:2:3:4:5:6:7:8` = list(value = 2L),
@@ -153,7 +153,7 @@ test_that("covr.record_tests: merging coverage test objects doesn't break defaul
 })
 
 
-test_that("covr.record_tests: test that coverage objects contain expected test data", {
+test_that("covr2.record_tests: test that coverage objects contain expected test data", {
   fcode <- '
   f <- function(x) {
     if (x)
@@ -162,7 +162,7 @@ test_that("covr.record_tests: test that coverage objects contain expected test d
       FALSE
   }'
 
-  withr::with_options(c("covr.record_tests" = TRUE), cov <- code_coverage(fcode, "f(TRUE)"))
+  withr::with_options(c("covr2.record_tests" = TRUE), cov <- code_coverage(fcode, "f(TRUE)"))
 
   # expect 4 covr traces due to test
   expect_equal(sum(unlist(lapply(cov, function(i) nrow(i[["tests"]])))), 4L)
@@ -177,14 +177,14 @@ test_that("covr.record_tests: test that coverage objects contain expected test d
   expect_equal(length(unique(unlist(lapply(cov, function(i) i[["tests"]][,"depth"])))), 2L)
 })
 
-test_that("covr.record_tests: safely handles extremely large calls", {
+test_that("covr2.record_tests: safely handles extremely large calls", {
   skip_on_cran()
   skip_if(is_r_devel())
 
   fcode <- 'f <- function(...) { sum(...) }'
 
   expect_warning(
-    withr::with_options(c("covr.record_tests" = TRUE), {
+    withr::with_options(c("covr2.record_tests" = TRUE), {
       cov <- code_coverage(fcode, "do.call('f', as.list(rep_len(1L, 1e6)))")
     }),
     "large call .* truncated"
@@ -220,10 +220,10 @@ test_that("covr.record_tests: safely handles extremely large calls", {
 
 })
 
-test_that("covr.record_tests: records multiple calls to the same test expr", {
+test_that("covr2.record_tests: records multiple calls to the same test expr", {
   fcode <- 'f1 <- function(...) "hello, world"; f2 <- function() c(1, 2, 3)'
 
-  withr::with_options(c("covr.record_tests" = TRUE), {
+  withr::with_options(c("covr2.record_tests" = TRUE), {
     cov <- code_coverage(fcode, "for (i in 1:3) with(new.env(), { f1(); f2() })")
   })
 

@@ -14,7 +14,7 @@ _dev\.R$
 ^wercker\.yml$
 ^\.Rproj\.user$
 ^tests/testthat/.*/.*(o|sl|so|dylib|a|dll|def)$
-^covr.*$
+^covr2.*$
 ^cran_comments\.md$
 ^revdep/
 ^cran-comments\.md$

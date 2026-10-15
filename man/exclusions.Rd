@@ -29,7 +29,7 @@ In addition you can exclude lines from the coverage by putting special comments
 in your source code. This can be done per line or by specifying a range.
 The patterns used can be specified by the \code{exclude_pattern}, \code{exclude_start},
 \code{exclude_end} arguments to \code{package_coverage()} or by setting the global
-options \code{covr.exclude_pattern}, \code{covr.exclude_start}, \code{covr.exclude_end}.
+options \code{covr2.exclude_pattern}, \code{covr2.exclude_start}, \code{covr2.exclude_end}.
 }
 
 \examples{

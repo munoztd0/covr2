@@ -1,7 +1,7 @@
 test_that("mcparallel without the fix", {
   skip_on_os("windows")
 
-  cov <- withr::with_options(list(covr.fix_parallel_mcexit = FALSE),
+  cov <- withr::with_options(list(covr2.fix_parallel_mcexit = FALSE),
     package_coverage("TestParallel", type = "test"))
   # only the non parallel code is covered
   expect_equal(floor(percent_coverage(cov)), 33)
@@ -34,7 +34,7 @@ test_that("should_enable_parallel_mcexit_fix", {
   skip_on_os("windows")
   on.exit({
       Sys.unsetenv('COVR_FIX_PARALLEL_MCEXIT')
-      options(covr.fix_parallel_mcexit = NULL)
+      options(covr2.fix_parallel_mcexit = NULL)
     }, add = TRUE
   )
 
@@ -56,9 +56,9 @@ test_that("should_enable_parallel_mcexit_fix", {
 
 
     if (is.na(option))
-      options(covr.fix_parallel_mcexit = NULL)
+      options(covr2.fix_parallel_mcexit = NULL)
     else
-      options(covr.fix_parallel_mcexit = option)
+      options(covr2.fix_parallel_mcexit = option)
 
     pkg <- covr2:::as_package(pkgname)
     covr2:::should_enable_parallel_mcexit_fix(pkg)

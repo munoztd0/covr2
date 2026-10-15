@@ -105,7 +105,7 @@ new_counter <- function(src_ref, parent_functions) {
   .counters[[key]]$value <- 0
   .counters[[key]]$srcref <- src_ref
   .counters[[key]]$functions <- parent_functions
-  if (isTRUE(getOption("covr.record_tests", FALSE))) new_test_counter(key)
+  if (isTRUE(getOption("covr2.record_tests", FALSE))) new_test_counter(key)
   key
 }
 
@@ -124,7 +124,7 @@ count <- function(key) {
 clear_counters <- function() {
   rm(envir = .counters, list = ls(envir = .counters))
   rm(envir = .current_test, list = ls(envir = .current_test))
-  .current_test$record <- isTRUE(getOption("covr.record_tests", FALSE))
+  .current_test$record <- isTRUE(getOption("covr2.record_tests", FALSE))
 }
 
 #' Generate a key for a  call

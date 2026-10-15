@@ -2,7 +2,7 @@
 *.so
 inst/doc
 .Rproj.user
-covr.Rproj
+covr2.Rproj
 cache/
 data.Rmd
 vignettes/covr_performance.Rmd

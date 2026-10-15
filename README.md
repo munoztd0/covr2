@@ -1,35 +1,36 @@
-# covr2 <img src="man/figures/logo.png" align="right" />
+# covr2 
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/munoztd0/covr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/munoztd0/covr/actions/workflows/R-CMD-check.yaml)
-[![CRAN version](https://www.r-pkg.org/badges/version/covr)](https://cran.r-project.org/package=covr)
+
+[![R-CMD-check](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml)
+[![CRAN version](https://www.r-pkg.org/badges/version/covr2)](https://cran.r-project.org/package=covr2)
+
 <!-- badges: end -->
 
 Track test coverage for your R package and view reports locally or (optionally)
 upload the results to [codecov](https://about.codecov.io/) or [coveralls](https://coveralls.io/).
 
-# Installation #
+# Installation
 
 ```r
 install.packages("covr2")
 
 # For devel version
-devtools::install_github("munoztd0/covr2")
+devtools::install_github("munoztd0/covr22")
 ```
-
 
 ```r
 usethis::use_github_action("test-coverage")
 ```
 
-# Usage #
+# Usage
 
 For local development a coverage report can be used to inspect coverage for
 each line in your package. *Note* requires the
 [DT](https://github.com/rstudio/DT) package to be installed.
 
 ```r
-library(covr)
+library(covr2)
 
 # If run with no arguments implicitly calls `package_coverage()`
 report()
@@ -41,7 +42,8 @@ menu or by binding the action to a
 [shortcut](https://rstudio.github.io/rstudioaddins/#keyboard-shorcuts), e.g.
 *Ctrl-Shift-C*.
 
-## Interactively ##
+## Interactively
+
 ```r
 # If run with the working directory within the package source.
 package_coverage()
@@ -58,11 +60,11 @@ as.data.frame(cov)
 zero_coverage(cov)
 ```
 
-# Exclusions #
+# Exclusions
 
-`covr` supports a few of different ways of excluding some or all of a file.
+`covr2` supports a few of different ways of excluding some or all of a file.
 
-## .covrignore file ##
+## .covrignore file
 
 A `.covrignore` file located in your package's root directory can be used to
 exclude files or directories.
@@ -72,14 +74,14 @@ ignore. It uses the globbing rules in `Sys.glob()`. Any directories listed will
 ignore all the files in the directory.
 
 Alternative locations for the file can be set by the environment variable
-`COVR_COVRIGNORE` or the R option `covr.covrignore`.
+`COVR_COVRIGNORE` or the R option `covr2.covrignore`.
 
 The `.covrignore` file should be added to your `.RBuildignore` file unless you
 want to distribute it with your package. If so it can be added to
 `inst/.covrignore` instead.
 
+## Function Exclusions
 
-## Function Exclusions ##
 The `function_exclusions` argument to `package_coverage()` can be used to
 exclude functions by name. This argument takes a vector of regular expressions
 matching functions to exclude.
@@ -92,7 +94,8 @@ package_coverage(function_exclusions = "print\\.")
 package_coverage(function_exclusions = "\\.onLoad")
 ```
 
-## Line Exclusions ##
+## Line Exclusions
+
 The `line_exclusions` argument to `package_coverage()` can be used to exclude some or
 all of a file.  This argument takes a list of filenames or named ranges to
 exclude.
@@ -108,12 +111,13 @@ package_coverage(line_exclusions = list("R/test.R" = c(1:10, 15)))
 package_coverage(line_exclusions = list("R/test.R" = c(1, 10), "R/test2.R"))
 ```
 
-## Exclusion Comments ##
+## Exclusion Comments
 
 In addition you can exclude lines from the coverage by putting special comments
 in your source code.
 
 This can be done per line.
+
 ```r
 f1 <- function(x) {
   x + 1 # nocov
@@ -121,6 +125,7 @@ f1 <- function(x) {
 ```
 
 Or by specifying a range with a start and end.
+
 ```r
 f2 <- function(x) { # nocov start
   x + 2
@@ -128,34 +133,39 @@ f2 <- function(x) { # nocov start
 ```
 
 The patterns used can be specified by setting the global options
-`covr.exclude_pattern`, `covr.exclude_start`, `covr.exclude_end`.
+`covr2.exclude_pattern`, `covr2.exclude_start`, `covr2.exclude_end`.
 
 NB: The same pattern applies to exclusions in the `src` folder, so skipped lines in, e.g., C code (where comments can start with `//`) should look like `// # nocov`.
 
-# FAQ #
-## Will covr work with testthat, RUnit, etc... ##
+# FAQ
+
+## Will covr work with testthat, RUnit, etc...
+
 Covr should be compatible with any testing package, it uses
 `tools::testInstalledPackage()` to run your packages tests.
 
-## Will covr work with alternative compilers such as ICC ##
+## Will covr work with alternative compilers such as ICC
+
 Covr now supports Intel's `icc` compiler, thanks to work contributed by Qin
 Wang at Oracle.
 
 Covr is known to work with clang versions `3.5+` and gcc version `4.2+`.
 
 If the appropriate gcov version is not on your path you can set the appropriate
-location with the `covr.gcov` options. If you set this path to "" it will turn
+location with the `covr2.gcov` options. If you set this path to "" it will turn
 _off_ coverage of compiled code.
+
 ```r
-options(covr.gcov = "path/to/gcov")
+options(covr2.gcov = "path/to/gcov")
 ```
 
-## How does covr work? ##
+## How does covr work?
+
 `covr` tracks test coverage by modifying a package's code to add tracking calls
 to each call.
 
 The vignette
-[vignettes/how_it_works.Rmd](https://github.com/munoztd0/covr/blob/master/vignettes/how_it_works.Rmd)
+[vignettes/how_it_works.Rmd](https://github.com/munoztd0/covr2/blob/master/vignettes/how_it_works.Rmd)
 contains a detailed explanation of the technique and the rationale behind it.
 
 You can view the vignette from within `R` using
@@ -164,17 +174,19 @@ You can view the vignette from within `R` using
 vignette("how_it_works", package = "covr")
 ```
 
-## Why can't covr run during R CMD check ##
+## Why can't covr run during R CMD check
+
 Because covr modifies the package code it is possible there are unknown edge
 cases where that modification affects the output. In addition when tracking
 coverage for compiled code covr compiles the package without optimization,
 which _can_ modify behavior (usually due to package bugs which are masked with
 higher optimization levels).
 
-# Alternative Coverage Tools #
-- <https://github.com/MangoTheCat/testCoverage> (no longer supported)
+# Alternative Coverage Tools
+
+- [https://github.com/MangoTheCat/testCoverage](https://github.com/MangoTheCat/testCoverage) (no longer supported)
 - [**R-coverage**](https://web.archive.org/web/20160611114452/http://r2d2.quartzbio.com/posts/r-coverage-docker.html) (no longer supported)
 
 ## Code of Conduct
 
-Please note that the covr project is released with a [Contributor Code of Conduct](https://github.com/munoztd0/covr/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the covr project is released with a [Contributor Code of Conduct](https://github.com/munoztd0/covr2/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

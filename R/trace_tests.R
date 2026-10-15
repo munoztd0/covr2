@@ -1,6 +1,6 @@
 #' Record Test Traces During Coverage Execution
 #'
-#' By setting `options(covr.record_tests = TRUE)`, the result of covr coverage
+#' By setting `options(covr2.record_tests = TRUE)`, the result of covr coverage
 #' collection functions will include additional data pertaining to the tests
 #' which are executed and an index of which tests, at what stack depth, trigger
 #' the execution of each trace.
@@ -55,7 +55,7 @@
 #'     FALSE
 #' }'
 #'
-#' options(covr.record_tests = TRUE)
+#' options(covr2.record_tests = TRUE)
 #' cov <- code_coverage(fcode, "f(TRUE)")
 #'
 #' # extract executed test code for the first test
@@ -87,7 +87,7 @@
 #' #      test call depth i
 #' # [1,]    1    1     2 4
 #'
-#' @name covr.record_tests
+#' @name covr2.record_tests
 NULL
 
 #' Append a test trace to a counter, updating global current test

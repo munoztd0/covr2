@@ -21,57 +21,57 @@
 #' `covr` uses the following [options()] to configure behaviour:
 #'
 #' \itemize{
-#'   \item `covr.covrignore`: A filename to use as an ignore file,
+#'   \item `covr2.covrignore`: A filename to use as an ignore file,
 #'     listing glob-style wildcarded paths of files to ignore for coverage
 #'     calculations. Defaults to the value of environment variable
 #'     `COVR_COVRIGNORE`, or `".covrignore"`  if the neither the option nor the
 #'     environment variable are set.
 #'
-#'   \item `covr.exclude_end`: Used along with `covr.exclude_start`, an optional
+#'   \item `covr2.exclude_end`: Used along with `covr2.exclude_start`, an optional
 #'     regular expression which ends a line-exclusion region. For more
 #'     details, see `?exclusions`.
 #'
-#'   \item `covr.exclude_pattern`: An optional line-exclusion pattern. Lines
+#'   \item `covr2.exclude_pattern`: An optional line-exclusion pattern. Lines
 #'     which match the pattern will be excluded from coverage. For more details,
 #'     see `?exclusions`.
 #'
-#'   \item `covr.exclude_start`: Used along with `covr.exclude_end`, an optional
+#'   \item `covr2.exclude_start`: Used along with `covr2.exclude_end`, an optional
 #'     regular expression which starts a line-exclusion region. For more
 #'     details, see `?exclusions`.
 #'
-#'   \item `covr.filter_non_package`: If `TRUE` (the default behavior), coverage
+#'   \item `covr2.filter_non_package`: If `TRUE` (the default behavior), coverage
 #'     of files outside the target package are filtered from coverage output.
 #'
-#'   \item `covr.fix_parallel_mcexit`:
+#'   \item `covr2.fix_parallel_mcexit`:
 #'
-#'   \item `covr.flags`:
+#'   \item `covr2.flags`:
 #'
-#'   \item `covr.gcov`: If the appropriate gcov version is not on your path you
+#'   \item `covr2.gcov`: If the appropriate gcov version is not on your path you
 #'     can use this option to set the appropriate location. If set to "" it will
 #'     turn off coverage of compiled code.
 #'
-#'   \item `covr.gcov_additional_paths`:
+#'   \item `covr2.gcov_additional_paths`:
 #'
-#'   \item `covr.gcov_args`:
+#'   \item `covr2.gcov_args`:
 #'
-#'   \item `covr.icov`:
+#'   \item `covr2.icov`:
 #'
-#'   \item `covr.icov_args`:
+#'   \item `covr2.icov_args`:
 #'
-#'   \item `covr.icov_flags`:
+#'   \item `covr2.icov_flags`:
 #'
-#'   \item `covr.icov_prof`:
+#'   \item `covr2.icov_prof`:
 #'
-#'   \item `covr.rstudio_source_markers`: A logical value. If `TRUE` (the
+#'   \item `covr2.rstudio_source_markers`: A logical value. If `TRUE` (the
 #'     default behavior), source markers are displayed within the RStudio IDE
 #'     when using `zero_coverage`.
 #'
-#'   \item `covr.record_tests`: If `TRUE` (default `NULL`), record a listing of
+#'   \item `covr2.record_tests`: If `TRUE` (default `NULL`), record a listing of
 #'     top level test expressions and associate tests with `covr` traces
 #'     evaluated during the test's execution. For more details, see
-#'     `?covr.record_tests`.
+#'     `?covr2.record_tests`.
 #'
-#'   \item `covr.showCfunctions`:
+#'   \item `covr2.showCfunctions`:
 #' }
 #'
 #'
@@ -129,7 +129,7 @@ as_coverage <- function(counters = NULL, ...) {
 
 #' Clean and restructure counter tests for a coverage object
 #'
-#' For tests produced with `options(covr.record_tests)`, prune any unused
+#' For tests produced with `options(covr2.record_tests)`, prune any unused
 #' records in the $tests$tally matrices of each trace and get rid of the
 #' wrapping $tests environment (reassigning with value of $tests$tally)
 #'
@@ -323,7 +323,7 @@ environment_coverage <- function(
 #' use a patched `parallel:::mcexit`. This is done automatically if the
 #' package depends on \pkg{parallel}, but can also be explicitly set using the
 #' environment variable `COVR_FIX_PARALLEL_MCEXIT` or the global option
-#' `covr.fix_parallel_mcexit`.
+#' `covr2.fix_parallel_mcexit`.
 #' #endif
 #'
 #' @param path file path to the package.
@@ -417,9 +417,9 @@ package_coverage <- function(path = ".",
 
   # check for compiler
   if (!uses_icc()) {
-    flags <- getOption("covr.flags")
-  } else if (length(getOption("covr.icov")) > 0L) {
-    flags <- getOption("covr.icov_flags")
+    flags <- getOption("covr2.flags")
+  } else if (length(getOption("covr2.icov")) > 0L) {
+    flags <- getOption("covr2.icov_flags")
     # clean up old icov files
     unlink(file.path(pkg$path, "src", "*.dyn"))
     unlink(file.path(pkg$path, "src", "pgopti.*"))
@@ -552,7 +552,7 @@ package_coverage <- function(path = ".",
     attr(coverage, "library") <- install_path
   }
 
-  if (getOption("covr.filter_non_package", TRUE)) {
+  if (getOption("covr2.filter_non_package", TRUE)) {
     coverage <- filter_non_package_files(coverage)
   }
 
@@ -692,7 +692,7 @@ renumber_trace_tests <- function(trace, test_idx) {
 # The tally of tests that hit each trace is held in a pre-allocated matrix
 # which may be padded with unused rows. Start by stripping unused rows:
 #
-# If tests were not recorded (that is, if `options(covr.record_tests)` was not
+# If tests were not recorded (that is, if `options(covr2.record_tests)` was not
 # `TRUE` when the coverage was calculated, this function will have no effect.
 #
 # @param obj A coverage counter environment, within which a $tests$tally matrix
@@ -782,14 +782,14 @@ run_commands <- function(pkg, lib, commands, fatal = TRUE) {
 # @param lib the library path to look in
 # @param fix_mcexit whether to add the fix for mcparallel:::mcexit
 add_hooks <- function(pkg_name, lib, fix_mcexit = FALSE,
-  record_tests = isTRUE(getOption("covr.record_tests", FALSE))) {
+  record_tests = isTRUE(getOption("covr2.record_tests", FALSE))) {
 
   trace_dir <- paste0("Sys.getenv(\"COVERAGE_DIR\", \"", lib, "\")")
 
   load_script <- file.path(lib, pkg_name, "R", pkg_name)
   lines <- readLines(load_script)
   lines <- append(lines,
-    c(paste0("setHook(packageEvent(pkg, \"onLoad\"), function(...) options(covr.record_tests = ", record_tests, "))"),
+    c(paste0("setHook(packageEvent(pkg, \"onLoad\"), function(...) options(covr2.record_tests = ", record_tests, "))"),
       "setHook(packageEvent(pkg, \"onLoad\"), function(...) covr2:::trace_environment(ns))",
       paste0("reg.finalizer(ns, function(...) { covr2:::save_trace(", trace_dir, ") }, onexit = TRUE)")),
     length(lines) - 1L)

@@ -124,7 +124,7 @@ env$f2() == 3
 
 As modifying external environments and correctly restoring them can be tricky
 to get correct, we use the C function
-[`covr_reassign_function`](https://github.com/munoztd0/covr/blob/main/src/reassign.c).
+[`covr_reassign_function`](https://github.com/munoztd0/covr2/blob/main/src/reassign.c).
 This function takes the target and replacement functions and copies the
 replacement's formals, body, attributes and environment into the target.
 This allows an in-place replacement of a given function and ensures that all

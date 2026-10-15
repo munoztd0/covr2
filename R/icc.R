@@ -22,7 +22,7 @@ parse_icov <- function(lines, package_path = "") {
     capture(name = "idcol", digits), "\t", any_spaces,
     capture(name = "coverage", digits))
 
-  show_C_functions <- getOption("covr.showCfunctions", FALSE)
+  show_C_functions <- getOption("covr2.showCfunctions", FALSE)
   if (length(idx1) == 0L) {
     m1 <- rex::re_matches(lines, re)
     m1$functions <- rep(NA_character_, nrow(m1))
@@ -63,8 +63,8 @@ parse_icov <- function(lines, package_path = "") {
 }
 
 run_icov <- function(path, quiet = TRUE,
-                     icov_path = getOption("covr.icov", ""),
-                     icov_args = getOption("covr.icov_args", NULL)) {
+                     icov_path = getOption("covr2.icov", ""),
+                     icov_args = getOption("covr2.icov_args", NULL)) {
 
   src_path <- normalize_path(file.path(path, "src"))
   if (!file.exists(src_path)) {
@@ -76,7 +76,7 @@ run_icov <- function(path, quiet = TRUE,
     return()
   }
 
-  icov_profmerge <- getOption("covr.icov_prof", "")
+  icov_profmerge <- getOption("covr2.icov_prof", "")
   if (!nzchar(icov_profmerge)) {
     warning("icc profmerge not available")
     return()

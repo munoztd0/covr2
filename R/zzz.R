@@ -2,14 +2,14 @@
   rex::register_shortcuts("covr2")
   op <- options()
   op_covr <- list(
-    covr.covrignore = Sys.getenv("COVR_COVRIGNORE", ".covrignore"),
-    covr.gcov = Sys.which("gcov"),
-    covr.gcov_args = NULL,
-    covr.gcov_additional_paths = NULL,
-    covr.exclude_pattern = rex::rex("#", any_spaces, "nocov"),
-    covr.exclude_start = rex::rex("#", any_spaces, "nocov", any_spaces, "start"),
-    covr.exclude_end = rex::rex("#", any_spaces, "nocov", any_spaces, "end"),
-    covr.flags = c(CFLAGS = "-O0 --coverage",
+    covr2.covrignore = Sys.getenv("COVR_COVRIGNORE", ".covrignore"),
+    covr2.gcov = Sys.which("gcov"),
+    covr2.gcov_args = NULL,
+    covr2.gcov_additional_paths = NULL,
+    covr2.exclude_pattern = rex::rex("#", any_spaces, "nocov"),
+    covr2.exclude_start = rex::rex("#", any_spaces, "nocov", any_spaces, "start"),
+    covr2.exclude_end = rex::rex("#", any_spaces, "nocov", any_spaces, "end"),
+    covr2.flags = c(CFLAGS = "-O0 --coverage",
                  CXXFLAGS = "-O0 --coverage",
                  CXX1XFLAGS = "-O0 --coverage",
                  CXX11FLAGS = "-O0 --coverage",
@@ -29,10 +29,10 @@
 # add icc code coverage settings
   icov_flag <- "-O0 -prof-gen=srcpos"
   op_covr <- c(op_covr, list(
-    covr.icov = Sys.which("codecov"),
-    covr.icov_args = NULL,
-    covr.icov_prof = Sys.which("profmerge"),
-    covr.icov_flags = c(CFLAGS = icov_flag,
+    covr2.icov = Sys.which("codecov"),
+    covr2.icov_args = NULL,
+    covr2.icov_prof = Sys.which("profmerge"),
+    covr2.icov_flags = c(CFLAGS = icov_flag,
                  CXXFLAGS = icov_flag,
                  CXX1XFLAGS = icov_flag,
                  CXX11FLAGS = icov_flag,

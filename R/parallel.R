@@ -34,11 +34,11 @@ on_windows <- function() {
 }
 
 # consider in that order: the environment variable COVR_FIX_PARALLEL_MCEXIT,
-# the option covr.fix_parallel_mcexit, or auto-detection of the usage of
+# the option covr2.fix_parallel_mcexit, or auto-detection of the usage of
 # parallel by the package (cf uses_parallel()).
 should_enable_parallel_mcexit_fix <- function(pkg) {
   isTRUE(!on_windows() &&
     as.logical(Sys.getenv("COVR_FIX_PARALLEL_MCEXIT",
-      getOption("covr.fix_parallel_mcexit",
+      getOption("covr2.fix_parallel_mcexit",
         uses_parallel(pkg)))))
 }

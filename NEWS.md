@@ -8,7 +8,7 @@
 
 * `merge_coverage()` is much faster for packages with many traces (@erkurtharun, #643).
 
-* With `options(covr.record_tests = TRUE)`, merging coverage now correctly
+* With `options(covr2.record_tests = TRUE)`, merging coverage now correctly
   renumbers the test indices of traces that are absent from the first
   coverage object (#643).
 
@@ -45,7 +45,7 @@
 * Fixed an issue where attempting to generate code coverage on an already-loaded
   package could fail on Windows. (@kevinushey, #574)
 
-* Prevent `covr.record_tests` option from logging duplicate tests when the same
+* Prevent `covr2.record_tests` option from logging duplicate tests when the same
   line of testing code is hit repeatedly, as in a loop. (@dgkf, #528)
 
 * Normalize `install_path` path before creating directory to prevent
@@ -74,8 +74,8 @@
 
 # covr 3.6.0
 
-* Added `covr.record_tests` option. When `TRUE`, this enables the recording of the trace of the tests being executed and adds an itemization of which tests result in the execution of each trace.
-  For more details see `?covr.record_tests` (@dgkf, #463, #485, #503)
+* Added `covr2.record_tests` option. When `TRUE`, this enables the recording of the trace of the tests being executed and adds an itemization of which tests result in the execution of each trace.
+  For more details see `?covr2.record_tests` (@dgkf, #463, #485, #503)
 
 * `as.data.frame()` now returns an 0 row data frame when there are no functions in a package (#427)
 

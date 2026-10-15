@@ -12,7 +12,7 @@ object. If \code{counters} is not provided, the \code{covr} namespace value
 \code{.counters} is used.}
 }
 \description{
-For tests produced with \code{options(covr.record_tests)}, prune any unused
+For tests produced with \code{options(covr2.record_tests)}, prune any unused
 records in the $tests$tally matrices of each trace and get rid of the
 wrapping $tests environment (reassigning with value of $tests$tally)
 }

@@ -65,8 +65,8 @@ clean_gcov <- function(path) {
 }
 
 run_gcov <- function(path, quiet = TRUE, clean = TRUE,
-                      gcov_path = getOption("covr.gcov", ""),
-                      gcov_args = getOption("covr.gcov_args", NULL)) {
+                      gcov_path = getOption("covr2.gcov", ""),
+                      gcov_args = getOption("covr2.gcov_args", NULL)) {
   src_path <- normalize_path(file.path(path, "src"))
   if (!file.exists(src_path)) {
      return()
@@ -116,7 +116,7 @@ run_gcov <- function(path, quiet = TRUE, clean = TRUE,
       })
     }
 
-    unlist(lapply(gcov_outputs, parse_gcov, package_path = c(path, getOption("covr.gcov_additional_paths", NULL))), recursive = FALSE)
+    unlist(lapply(gcov_outputs, parse_gcov, package_path = c(path, getOption("covr2.gcov_additional_paths", NULL))), recursive = FALSE)
   }
 
   res <- compact(unlist(lapply(gcov_inputs, run_gcov_one), recursive = FALSE))
