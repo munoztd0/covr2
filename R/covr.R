@@ -490,10 +490,14 @@ package_coverage <- function(path = ".",
       R_TESTS = file.path(R.home("share"), "R", "tests-startup.R")), {
 
 
+    test_failed <- FALSE
+
     withCallingHandlers({
       if ("vignettes" %in% type) {
         type <- type[type != "vignettes"]
-        run_vignettes(pkg, install_path)
+        if (run_vignettes(pkg, install_path, fatal = FALSE)) {
+          test_failed <<- TRUE
+        }
       }
 
       out_dir <- file.path(install_path, pkg$package)
@@ -504,22 +508,26 @@ package_coverage <- function(path = ".",
         withr::with_envvar(c(R_LIBS = Sys.getenv("R_LIBS")), {
           result <- tools::testInstalledPackage(pkg$package, outDir = out_dir, types = "examples", lib.loc = install_path, ...)
           if (result != 0L) {
-            show_failures(out_dir)
+            test_failed <<- TRUE
+            show_failures(out_dir, fatal = FALSE)
           }
         })
       }
       if ("tests" %in% type) {
         result <- tools::testInstalledPackage(pkg$package, outDir = out_dir, types = "tests", lib.loc = install_path, ...)
         if (result != 0L) {
-          show_failures(out_dir)
+          test_failed <<- TRUE
+          show_failures(out_dir, fatal = FALSE)
         }
       }
 
       # We always run the commands file (even if empty) to load the package and
       # initialize all the counters to 0.
-      run_commands(pkg, install_path, code)
+      if (run_commands(pkg, install_path, code, fatal = FALSE)) {
+        test_failed <<- TRUE
+      }
     },
-    message = function(e) if (quiet) invokeRestart("muffleMessage") else e,
+    message = function(e) if (quiet && !test_failed) invokeRestart("muffleMessage") else e,
     warning = function(e) if (quiet) invokeRestart("muffleWarning") else e)
     })
     })
@@ -536,7 +544,8 @@ package_coverage <- function(path = ".",
   coverage <- as_coverage(
     c(coverage, res),
     package = pkg,
-    root = root
+    root = root,
+    test_status = if (test_failed) NA else TRUE
   )
 
   if (!clean) {
@@ -576,7 +585,7 @@ coverage_to_list <- function(x = package_coverage()){
   return(list(filecoverage = file_result, totalcoverage = total_result))
 }
 
-show_failures <- function(dir) {
+show_failures <- function(dir, fatal = TRUE) {
   fail_files <- list.files(dir, pattern = "fail$", recursive = TRUE, full.names = TRUE)
   for (file in fail_files) {
     lines <- readLines(file)
@@ -598,9 +607,15 @@ show_failures <- function(dir) {
 
     error_body <- substr(error_body, body_len - (error_length - header_len), body_len)
 
-    cnd <- structure(list(message = paste0(error_header, error_body)), class = c("covr_error", "error", "condition"))
-    stop(cnd)
+    msg <- paste0(error_header, error_body)
+    if (isTRUE(fatal)) {
+      cnd <- structure(list(message = msg), class = c("covr_error", "error", "condition"))
+      stop(cnd)
+    } else {
+      message(msg)
+    }
   }
+  length(fail_files) > 0
 }
 
 # Merge multiple coverage objects together. Traces are matched by name; the
@@ -720,7 +735,7 @@ parse_type <- function(type) {
 # explicitly loaded to ensure output even if no vignettes exist.
 # @param pkg Package object (from as_package) to run
 # @param lib the library path to look in
-run_vignettes <- function(pkg, lib) {
+run_vignettes <- function(pkg, lib, fatal = TRUE) {
   outfile <- file.path(lib, paste0(pkg$package, "-Vignette.Rout"))
   failfile <- paste(outfile, "fail", sep = "." )
   cat("tools::buildVignettes(dir = '", pkg$path, "')\n", file = outfile, sep = "")
@@ -729,13 +744,14 @@ run_vignettes <- function(pkg, lib) {
                shQuote(outfile), shQuote(failfile))
   res <- system(cmd)
   if (res != 0) {
-    show_failures(dirname(failfile))
+    show_failures(dirname(failfile), fatal = fatal)
   } else {
     file.rename(failfile, outfile)
+    FALSE
   }
 }
 
-run_commands <- function(pkg, lib, commands) {
+run_commands <- function(pkg, lib, commands, fatal = TRUE) {
   outfile <- file.path(lib, paste0(pkg$package, "-commands.Rout"))
   failfile <- paste(outfile, "fail", sep = "." )
   writeLines(c(
@@ -746,16 +762,17 @@ run_commands <- function(pkg, lib, commands) {
                shQuote(outfile), shQuote(failfile))
   res <- system(cmd)
   if (res != 0L) {
-    show_failures(dirname(failfile))
+    show_failures(dirname(failfile), fatal = fatal)
   } else {
     file.rename(failfile, outfile)
+    FALSE
   }
 }
 
 # Add hooks to the installed package
 # Installed packages have lazy loading code to setup the lazy load database at
 # pkg_name/R/pkg_name. This function adds a user level onLoad Hook to the
-# package which calls `covr::trace_environment`, so the package environment is
+# package which calls `covr2::trace_environment`, so the package environment is
 # traced when the package is loaded.
 # It also adds a finalizer that saves the tracing information to the package
 # namespace environment which is run when the ns is garbage collected or the
@@ -773,12 +790,12 @@ add_hooks <- function(pkg_name, lib, fix_mcexit = FALSE,
   lines <- readLines(load_script)
   lines <- append(lines,
     c(paste0("setHook(packageEvent(pkg, \"onLoad\"), function(...) options(covr.record_tests = ", record_tests, "))"),
-      "setHook(packageEvent(pkg, \"onLoad\"), function(...) covr:::trace_environment(ns))",
-      paste0("reg.finalizer(ns, function(...) { covr:::save_trace(", trace_dir, ") }, onexit = TRUE)")),
+      "setHook(packageEvent(pkg, \"onLoad\"), function(...) covr2:::trace_environment(ns))",
+      paste0("reg.finalizer(ns, function(...) { covr2:::save_trace(", trace_dir, ") }, onexit = TRUE)")),
     length(lines) - 1L)
 
   if (fix_mcexit) {
-    lines <- append(lines, sprintf("covr:::fix_mcexit('%s')", trace_dir))
+    lines <- append(lines, sprintf("covr2:::fix_mcexit('%s')", trace_dir))
   }
 
   writeLines(text = lines, con = load_script)
