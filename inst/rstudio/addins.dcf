@@ -1,4 +1,4 @@
 Name: Calculate package test coverage
-Description: Calculates the package test coverage and opens a report, using `covr::report()`
+Description: Calculates the package test coverage and opens a report, using `covr2::report()`
 Binding: addin_report
 Interactive: false

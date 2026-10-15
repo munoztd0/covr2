@@ -15,7 +15,7 @@ trace_calls <- function (x, parent_functions = NULL, parent_ref = NULL) {
   count <- function(key, val) {
     call("if", TRUE,
       call("{",
-        as.call(list(call(":::", as.symbol("covr"), as.symbol("count")), key)),
+        as.call(list(call(":::", as.symbol("covr2"), as.symbol("count")), key)),
         val
       )
     )

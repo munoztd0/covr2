@@ -2,7 +2,7 @@
 % Please edit documentation in R/trace_tests.R
 \name{is_covr_count_call}
 \alias{is_covr_count_call}
-\title{Is the expression a call to covr:::count}
+\title{Is the expression a call to covr2:::count}
 \usage{
 is_covr_count_call(expr)
 }
@@ -11,8 +11,8 @@ is_covr_count_call(expr)
 }
 \value{
 A logical value indicating whether the object is a call to
-\code{covr:::count}.
+\code{covr2:::count}.
 }
 \description{
-Is the expression a call to covr:::count
+Is the expression a call to covr2:::count
 }

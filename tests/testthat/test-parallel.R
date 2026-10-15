@@ -21,11 +21,11 @@ test_that("mcparallel with the fix", {
 
 
 test_that("uses_parallel", {
-  pkg <- covr:::as_package("TestParallel")
-  expect_true(covr:::uses_parallel(pkg))
+  pkg <- covr2:::as_package("TestParallel")
+  expect_true(covr2:::uses_parallel(pkg))
 
-  pkg <- covr:::as_package("TestSummary")
-  expect_false(covr:::uses_parallel(pkg))
+  pkg <- covr2:::as_package("TestSummary")
+  expect_false(covr2:::uses_parallel(pkg))
 })
 
 
@@ -60,8 +60,8 @@ test_that("should_enable_parallel_mcexit_fix", {
     else
       options(covr.fix_parallel_mcexit = option)
 
-    pkg <- covr:::as_package(pkgname)
-    covr:::should_enable_parallel_mcexit_fix(pkg)
+    pkg <- covr2:::as_package(pkgname)
+    covr2:::should_enable_parallel_mcexit_fix(pkg)
   }
 
   res <- with(grid, vapply(1:nrow(grid),

@@ -1,5 +1,5 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+# Workflow derived from https://github.com/munoztd0/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/munoztd0/actions#where-to-find-help
 on:
   issue_comment:
     types: [created]
@@ -16,15 +16,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/pr-fetch@v2
+      - uses: munoztd0/actions/pr-fetch@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: r-lib/actions/setup-r@v2
+      - uses: munoztd0/actions/setup-r@v2
         with:
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
+      - uses: munoztd0/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::roxygen2
           needs: pr-document
@@ -40,7 +40,7 @@ jobs:
           git add man/\* NAMESPACE
           git commit -m 'Document'
 
-      - uses: r-lib/actions/pr-push@v2
+      - uses: munoztd0/actions/pr-push@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -53,11 +53,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: r-lib/actions/pr-fetch@v2
+      - uses: munoztd0/actions/pr-fetch@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: r-lib/actions/setup-r@v2
+      - uses: munoztd0/actions/setup-r@v2
 
       - name: Install dependencies
         run: install.packages("styler")
@@ -74,6 +74,6 @@ jobs:
           git add \*.R
           git commit -m 'Style'
 
-      - uses: r-lib/actions/pr-push@v2
+      - uses: munoztd0/actions/pr-push@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}

@@ -85,9 +85,9 @@ evaluated during the test's execution. For more details, see
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://covr.r-lib.org}
-  \item \url{https://github.com/r-lib/covr}
-  \item Report bugs at \url{https://github.com/r-lib/covr/issues}
+  \item \url{https://munoztd0.github.io/covr2}
+  \item \url{https://github.com/munoztd0/covr}
+  \item Report bugs at \url{https://github.com/munoztd0/covr/issues}
 }
 
 }

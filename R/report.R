@@ -22,7 +22,7 @@ report <- function(x = package_coverage(),
   file <- file.path(normalizePath(dirname(file), mustWork = TRUE), basename(file))
 
   if (!(requireNamespace("htmltools", quietly = TRUE) && requireNamespace("DT", quietly = TRUE))) {
-    stop("The `DT` and `htmltools` packages must be installed to use `covr::report()`", call. = FALSE)
+    stop("The `DT` and `htmltools` packages must be installed to use `covr2::report()`", call. = FALSE)
   }
 
   data <- to_report_data(x)
@@ -54,6 +54,14 @@ report <- function(x = package_coverage(),
 
   package_name <- attr(x, "package")$package
   percentage <- sprintf("%02.2f%%", data$overall)
+  test_status <- attr(x, "test_status")
+  status_banner <- if (is.na(test_status %||% TRUE)) {
+    htmltools::div(
+      style = "background-color:#fcece9;border:1px solid #d9534f;padding:10px;margin-bottom:15px;border-radius:4px;",
+      htmltools::strong("\u26a0 Some tests failed."),
+      " Coverage shown is partial and may not reflect the full test suite."
+    )
+  }
 
   table <- DT::datatable(
     data$file_stats,
@@ -76,6 +84,7 @@ report <- function(x = package_coverage(),
     htmltools::includeCSS(system.file("www/report.css", package = "covr")),
     column(8, offset = 2, size = "md",
       htmltools::HTML(paste0("<h2>", package_name, " coverage - ", percentage, "</h2>")),
+      status_banner,
       tabset_panel(
         tab_panel("Files",
           table
@@ -249,7 +258,7 @@ addin_report <- function() {
 
   project <- rstudioapi::getActiveProject()
 
-  covr::report(covr::package_coverage(project %||% getwd()))
+  covr2::report(covr2::package_coverage(project %||% getwd()))
 }
 
 # These are all adapted from functions in shiny

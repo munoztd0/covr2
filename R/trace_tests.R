@@ -158,7 +158,7 @@ new_test_counter <- function(key) {
     ncol = 4L,
     # initialize with 4 empty rows, only expanded once populated
     nrow = 4L,
-    # cols: test index; call index; call stack depth of covr:::count; execution order index
+    # cols: test index; call index; call stack depth of covr2:::count; execution order index
     dimnames = list(c(), c("test", "call", "depth", "i"))
   )
 }
@@ -166,7 +166,7 @@ new_test_counter <- function(key) {
 #' Update current test if unit test expression has progressed
 #'
 #' Updating a test logs some metadata regarding the current call stack, noteably
-#' trying to capture information about the call stack prior to the covr::count
+#' trying to capture information about the call stack prior to the covr2::count
 #' call being traced.
 #'
 #' There are a couple patterns of behavior, which try to accommodate a variety
@@ -184,7 +184,7 @@ new_test_counter <- function(key) {
 #'
 #' checks to see if the current call stack has the same
 #' `srcref` (or expression, if no source is available) at the same frame prior
-#' to entering into a package where `covr:::count` is called.
+#' to entering into a package where `covr2:::count` is called.
 #'
 #' @keywords internal
 #'
@@ -193,7 +193,7 @@ new_test_counter <- function(key) {
 update_current_test <- function() {
   syscalls <- sys.calls()
   syscall_first_count <- Position(is_covr_count_call, syscalls, nomatch = -1L)
-  if (syscall_first_count < 2L) return()  # skip if nothing before covr::count
+  if (syscall_first_count < 2L) return()  # skip if nothing before covr2::count
   syscall_srcfile <- vcapply(syscalls, get_source_filename, normalize = TRUE)
 
   has_srcfile <- viapply(syscall_srcfile, length) > 0L
@@ -207,7 +207,7 @@ update_current_test <- function() {
     # if possible, try to take any frames within the temporary library
     which(srcfile_tmp)
   } else {
-    # otherwise, default to taking all syscalls up until covr:::count
+    # otherwise, default to taking all syscalls up until covr2:::count
     seq_len(syscall_first_count - 1L)
   }
 
@@ -358,11 +358,11 @@ has_srcref <- function(expr) {
   !is.null(getSrcref(expr))
 }
 
-#' Is the expression a call to covr:::count
+#' Is the expression a call to covr2:::count
 #'
 #' @param expr A language object
 #' @return A logical value indicating whether the object is a call to
-#'   `covr:::count`.
+#'   `covr2:::count`.
 #'
 is_covr_count_call <- function(expr) {
   count_call <- call(":::", as.symbol("covr"), as.symbol("count"))

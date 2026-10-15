@@ -83,6 +83,22 @@ test_that("show_failures shows as much text as it can from the end", {
   })
 })
 
+test_that("show_failures with fatal = FALSE emits message instead of error", {
+  td <- tempfile()
+  dir.create(td)
+  on.exit(unlink(td, recursive = TRUE))
+
+  out <- file.path(td, "test.Rout.fail")
+  writeLines("> some_test()\nError: boom", out)
+
+  expect_message(res <- show_failures(td, fatal = FALSE), "boom")
+  expect_true(res)
+
+  # Returns FALSE when no fail files exist
+  unlink(out)
+  expect_false(show_failures(td, fatal = FALSE))
+})
+
 test_that("merge_coverage sums the counts of shared traces", {
   a <- list(t1 = list(value = 1L), t2 = list(value = 2L))
   b <- list(t2 = list(value = 3L), t3 = list(value = 4L), t1 = list(value = 5L))

@@ -1,8 +1,7 @@
-# covr <img src="man/figures/logo.png" align="right" />
+# covr2 <img src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/r-lib/covr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/covr/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/covr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/r-lib/covr?branch=master)
+[![R-CMD-check](https://github.com/munoztd0/covr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/munoztd0/covr/actions/workflows/R-CMD-check.yaml)
 [![CRAN version](https://www.r-pkg.org/badges/version/covr)](https://cran.r-project.org/package=covr)
 <!-- badges: end -->
 
@@ -12,14 +11,12 @@ upload the results to [codecov](https://about.codecov.io/) or [coveralls](https:
 # Installation #
 
 ```r
-install.packages("covr")
+install.packages("covr2")
 
 # For devel version
-devtools::install_github("r-lib/covr")
+devtools::install_github("munoztd0/covr2")
 ```
 
-The easiest way to setup covr on [Github Actions](https://github.com/r-lib/actions/tree/v2-branch/examples#test-coverage-workflow) 
-is with [usethis](https://github.com/r-lib/usethis).
 
 ```r
 usethis::use_github_action("test-coverage")
@@ -158,7 +155,7 @@ options(covr.gcov = "path/to/gcov")
 to each call.
 
 The vignette
-[vignettes/how_it_works.Rmd](https://github.com/r-lib/covr/blob/master/vignettes/how_it_works.Rmd)
+[vignettes/how_it_works.Rmd](https://github.com/munoztd0/covr/blob/master/vignettes/how_it_works.Rmd)
 contains a detailed explanation of the technique and the rationale behind it.
 
 You can view the vignette from within `R` using
@@ -180,4 +177,4 @@ higher optimization levels).
 
 ## Code of Conduct
 
-Please note that the covr project is released with a [Contributor Code of Conduct](https://github.com/r-lib/covr/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the covr project is released with a [Contributor Code of Conduct](https://github.com/munoztd0/covr/blob/main/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

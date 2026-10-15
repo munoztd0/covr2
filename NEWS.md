@@ -1,4 +1,4 @@
-# covr (development version)
+# covr2 (development version)
 
 * Fix a generational garbage-collection bug when replacing traced functions in
   place, without permanently retaining their bodies or environments (#640).
@@ -99,7 +99,7 @@
 
 # covr 3.5.1
 
-* Generated files from [cpp11](https://cpp11.r-lib.org/) are now ignored (#437)
+* Generated files from [cpp11](https://cpp11.munoztd0.org/) are now ignored (#437)
 
 * `codecov()` and `coveralls()` now retry failed requests before raising an error (#428, @jameslamb)
 
@@ -156,7 +156,7 @@
 
 * `to_cobertura()` now works with Cobertura coverage-04.dtd (@samssann, #337).
 
-* [R6](https://github.com/r-lib/R6) class generators prefixed with `.` are now
+* [R6](https://github.com/munoztd0/R6) class generators prefixed with `.` are now
   included in coverage results (@jameslamb, #356).
 
 * `package_coverage()` gains option `pre_clean`, set to `FALSE` to disable

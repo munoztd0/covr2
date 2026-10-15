@@ -8,7 +8,7 @@ update_current_test()
 }
 \description{
 Updating a test logs some metadata regarding the current call stack, noteably
-trying to capture information about the call stack prior to the covr::count
+trying to capture information about the call stack prior to the covr2::count
 call being traced.
 }
 \details{
@@ -27,6 +27,6 @@ their execution, in which case the entire test call stack is kept.
 
 checks to see if the current call stack has the same
 \code{srcref} (or expression, if no source is available) at the same frame prior
-to entering into a package where \code{covr:::count} is called.
+to entering into a package where \code{covr2:::count} is called.
 }
 \keyword{internal}

@@ -166,7 +166,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"covr_reassign_function", (DL_FUNC)&covr_reassign_function, 2},
     {NULL, NULL, 0}};
 
-void R_init_covr(DllInfo *dll) {
+void R_init_covr2(DllInfo *dll) {
   R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
   R_useDynamicSymbols(dll, FALSE);
 }
