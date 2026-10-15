@@ -34,7 +34,7 @@
 #'
 #' Test traces are extracted by the following criteria:
 #'
-#' 1. If any `srcref` files are are provided by a file within [covr]'s temporary
+#' 1. If any `srcref` files are are provided by a file within [covr2]'s temporary
 #'    library, all calls from those files are kept as a test trace. This will
 #'    collect traces from tests run with common testing frameworks such as
 #'    `testthat` and `RUnit`.
@@ -43,7 +43,7 @@
 #'    directory, the entire call stack is collected.
 #'
 #' These calls are subsequently subset for only those up until the call to
-#' [covr]'s internal `count` function, and will always include the last call in
+#' [covr2]'s internal `count` function, and will always include the last call in
 #' the call stack prior to a call to `count`.
 #'
 #' @examples
@@ -365,6 +365,6 @@ has_srcref <- function(expr) {
 #'   `covr2:::count`.
 #'
 is_covr_count_call <- function(expr) {
-  count_call <- call(":::", as.symbol("covr"), as.symbol("count"))
+  count_call <- call(":::", as.symbol("covr2"), as.symbol("count"))
   identical(expr[[1]], count_call)
 }

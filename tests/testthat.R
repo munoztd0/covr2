@@ -9,4 +9,4 @@
 library(testthat)
 library(covr)
 
-test_check("covr")
+test_check("covr2")

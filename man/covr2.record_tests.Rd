@@ -42,7 +42,7 @@ information in the sources kept for the testing files.
 
 Test traces are extracted by the following criteria:
 \enumerate{
-\item If any \code{srcref} files are are provided by a file within \link{covr}'s temporary
+\item If any \code{srcref} files are are provided by a file within \link{covr2}'s temporary
 library, all calls from those files are kept as a test trace. This will
 collect traces from tests run with common testing frameworks such as
 \code{testthat} and \code{RUnit}.
@@ -52,7 +52,7 @@ directory, the entire call stack is collected.
 }
 
 These calls are subsequently subset for only those up until the call to
-\link{covr}'s internal \code{count} function, and will always include the last call in
+\link{covr2}'s internal \code{count} function, and will always include the last call in
 the call stack prior to a call to \code{count}.
 }
 

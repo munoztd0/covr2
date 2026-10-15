@@ -121,7 +121,7 @@ zero_coverage <- function(x, ...) {
       rstudioapi::hasFun("sourceMarkers")) {
     markers <- markers(coverage_data)
     rstudioapi::callFun("sourceMarkers",
-                        name = "covr",
+                        name = "covr2",
                         markers = markers,
                         basePath = attr(x, "package")$path,
                         autoSelect = "first")
@@ -218,7 +218,7 @@ markers.coverages <- function(x, ...) {
 
   # request source markers
   rstudioapi::callFun("sourceMarkers",
-                      name = "covr",
+                      name = "covr2",
                       markers = mrks,
                       basePath = NULL,
                       autoSelect = "first")

@@ -91,12 +91,12 @@ test_that("show_failures with fatal = FALSE emits message instead of error", {
   out <- file.path(td, "test.Rout.fail")
   writeLines("> some_test()\nError: boom", out)
 
-  expect_message(res <- show_failures(td, fatal = FALSE), "boom")
+  expect_message(res <- covr2:::show_failures(td, fatal = FALSE), "boom")
   expect_true(res)
 
   # Returns FALSE when no fail files exist
   unlink(out)
-  expect_false(show_failures(td, fatal = FALSE))
+  expect_false(covr2:::show_failures(td, fatal = FALSE))
 })
 
 test_that("merge_coverage sums the counts of shared traces", {

@@ -18,7 +18,7 @@ fix_mcexit <- function(trace_dir) {
 
   # directly patch mcexit
   body(mcexit) <- as.call(append(after = 1, as.list(body(mcexit)),
-      as.call(list(call(":::", as.symbol("covr"), as.symbol("save_trace")), trace_dir))))
+      as.call(list(call(":::", as.symbol("covr2"), as.symbol("save_trace")), trace_dir))))
 
   replace_binding('parallel', 'mcexit', mcexit)
 }

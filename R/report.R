@@ -81,7 +81,7 @@ report <- function(x = package_coverage(),
   table$sizingPolicy$defaultHeight <- NULL
 
   ui <- fluid_page(
-    htmltools::includeCSS(system.file("www/report.css", package = "covr")),
+    htmltools::includeCSS(system.file("www/report.css", package = "covr2")),
     column(8, offset = 2, size = "md",
       htmltools::HTML(paste0("<h2>", package_name, " coverage - ", percentage, "</h2>")),
       status_banner,
@@ -127,7 +127,7 @@ file_report <- function(x = package_coverage(), file = NULL, out_file = file.pat
   percentage <- data$file_stats$Coverage
 
   ui <- fluid_page(
-    htmltools::includeCSS(system.file("www/report.css", package = "covr")),
+    htmltools::includeCSS(system.file("www/report.css", package = "covr2")),
     column(8, offset = 2, size = "md",
       htmltools::HTML(paste0("<h2>", file, " - ", percentage, "</h2>")),
       addHighlight(
@@ -245,7 +245,7 @@ renderSourceTable <- function(data, class = "hidden") {
 
 addHighlight <- function(x = list()) {
   highlight <- htmltools::htmlDependency("highlight.js", "6.2",
-                                         system.file(package = "covr",
+                                         system.file(package = "covr2",
                                                      "www/shared/highlight.js"),
                                          script = "highlight.pack.js",
                                          stylesheet = "rstudio.css")
@@ -290,7 +290,7 @@ bootstrap_page <- function(...) {
 # from htmldeps::html_dependency_bootstrap (not yet on CRAN)
 html_dependency_bootstrap <- function () {
   htmltools::htmlDependency(name = "bootstrap", version = "3.3.5",
-    src = system.file(file = "www/shared/bootstrap", package = "covr"),
+    src = system.file(file = "www/shared/bootstrap", package = "covr2"),
     meta = list(viewport = "width=device-width, initial-scale=1"),
     script = c("js/bootstrap.min.js", "shim/html5shiv.min.js", "shim/respond.min.js"),
     stylesheet = c("css/bootstrap.min.css", "css/bootstrap-theme.min.css")

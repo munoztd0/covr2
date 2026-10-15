@@ -527,7 +527,7 @@ package_coverage <- function(path = ".",
         test_failed <<- TRUE
       }
     },
-    message = function(e) if (quiet && !test_failed) invokeRestart("muffleMessage") else e,
+    message = function(e) if (quiet) invokeRestart("muffleMessage") else e,
     warning = function(e) if (quiet) invokeRestart("muffleWarning") else e)
     })
     })

@@ -40,7 +40,7 @@ to_cobertura <- function(cov, filename = "cobertura.xml") {
     `branches-covered` = "0",
     `branches-valid` = "0",
     complexity = 0,
-    version = as.character(utils::packageVersion("covr")),
+    version = as.character(utils::packageVersion("covr2")),
     timestamp = as.character(Sys.time()))
 
   # Add sources

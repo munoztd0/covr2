@@ -6,12 +6,12 @@ test_that("one-line functions are traced correctly", {
   fun <- function(x) x + 1
 
   expect_equal(as.character(body(trace_calls(fun))[[3]][[2]][[1]]),
-      c(":::", "covr", "count"))
+      c(":::", "covr2", "count"))
 
   fun <- function() 1
 
   expect_equal(as.character(body(trace_calls(fun))[[3]][[2]][[1]]),
-      c(":::", "covr", "count"))
+      c(":::", "covr2", "count"))
 
   expect_equal(body(trace_calls(fun))[[3]][[3]], body(fun))
 })
@@ -23,7 +23,7 @@ test_that("one-line functions with no calls are traced correctly", {
   fun <- function(x) x
 
   expect_equal(as.character(body(trace_calls(fun))[[3]][[2]][[1]]),
-      c(":::", "covr", "count"))
+      c(":::", "covr2", "count"))
 
   expect_equal(body(trace_calls(fun))[[3]][[3]], body(fun))
 })
@@ -37,7 +37,7 @@ test_that("one-line functions with braces are traced correctly", {
   }
 
   expect_equal(as.character(body(trace_calls(fun))[[2]][[3]][[2]][[1]]),
-      c(":::", "covr", "count"))
+      c(":::", "covr2", "count"))
 
   expect_equal(body(trace_calls(fun))[[2]][[3]][[3]], body(fun)[[2]])
 })
@@ -53,7 +53,7 @@ test_that("one-line functions with no calls and braces are traced correctly", {
 
   e2 <- body(trace_calls(fun))[[2]][[3]]
   expect_true(length(e2) > 1 &&
-              identical(as.character(e2[[2]][[1]]), c(":::", "covr", "count")))
+              identical(as.character(e2[[2]][[1]]), c(":::", "covr2", "count")))
 
   fun <- function(x) {
     x
@@ -63,7 +63,7 @@ test_that("one-line functions with no calls and braces are traced correctly", {
 
   # the second expr should be a block
   expect_true(length(e2) > 1 &&
-    identical(as.character(e2[[2]][[1]]), c(":::", "covr", "count")))
+    identical(as.character(e2[[2]][[1]]), c(":::", "covr2", "count")))
 })
 
 
@@ -84,7 +84,7 @@ test_that("last evaled expression is traced", {
   # last expression: the implicit return expression
   e3 <- body[[3]][[3]]
   expect_true(length(e3) > 1 &&
-    identical(as.character(e3[[2]][[1]]), c(":::", "covr", "count")))
+    identical(as.character(e3[[2]][[1]]), c(":::", "covr2", "count")))
 
 })
 
@@ -110,7 +110,7 @@ test_that("functions with curly curly syntax are traced correctly", {
   # outer code traced traced with ({  })
   expect_equal(as.character(body(my_capture2)[[2]][[1]]), "if")
   expect_equal(as.character(body(my_capture2)[[2]][[3]][[1]]), "{")
-  expect_equal(as.character(body(my_capture2)[[2]][[3]][[2]][[1]]), c(":::", "covr", "count"))
+  expect_equal(as.character(body(my_capture2)[[2]][[3]][[2]][[1]]), c(":::", "covr2", "count"))
 
   # no trace in the internal {{  }}
   expect_equal(as.character(body(my_capture2)[[2]][[3]][[3]][[2]][[1]]), "{")
