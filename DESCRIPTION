@@ -5,7 +5,7 @@ Version: 1.0.0
 Authors@R: c(
     person("David", "Munoz Tord", email = "david.munoztord@mailbox.org", role = c("cre")),
     person("Jim", "Hester", role = "cph",
-           comment = "Author of original covr functions"),
+           comment = "Author of original covr functions")
     )
 Description: Track and report code coverage for your package and (optionally)
     upload the results to a coverage service like 'Codecov' <https://about.codecov.io> or
