@@ -1,15 +1,14 @@
 # covr2 
 
+**Code coverage without the unnecessary suffering.**
+
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml)
-[![CRAN version](https://www.r-pkg.org/badges/version/covr2)](https://cran.r-project.org/package=covr2)
+<!-- [![CRAN version](https://www.r-pkg.org/badges/version/covr2)](https://cran.r-project.org/package=covr2) -->
 
 <!-- badges: end -->
 
-# covr2
-
-**Code coverage without the unnecessary suffering.**
 
 ## Why covr2?
 
