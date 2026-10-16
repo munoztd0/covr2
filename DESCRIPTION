@@ -54,15 +54,15 @@ Imports:
     httr,
     cli,
     withr (>= 1.0.2),
-    yaml
+    yaml,
+    htmltools,
+    DT (>= 0.2)
 Suggests:
     R6,
     S7 (>= 0.2.0),
     curl,
     knitr,
     rmarkdown,
-    htmltools,
-    DT (>= 0.2),
     testthat (>= 3.0.0),
     rlang,
     rstudioapi (>= 0.2),
