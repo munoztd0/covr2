@@ -1,4 +1,4 @@
-# covr2 [![](reference/figures/logo.png)](https://github.com/munoztd0/covr2)
+# covr ![](reference/figures/logo.png)
 
 **Code coverage without the unnecessary suffering.**
 
