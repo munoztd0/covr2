@@ -1,4 +1,4 @@
-# covr2 <a href='https://github.com/munoztd0/covr2'><img src="man/figures/logo.png" align="right" width="200"/></a>
+# covr <img src="man/figures/logo.png" align="right" />
 
 **Code coverage without the unnecessary suffering.**
 
