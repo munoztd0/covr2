@@ -1,7 +1,5 @@
 # covr2
 
-# covr2
-
 **Code coverage without the unnecessary suffering.**
 
 ## Why covr2?
