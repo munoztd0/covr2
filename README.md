@@ -1,4 +1,4 @@
-# covr 
+# covr <img src="man/figures/logo.png" align="right" />
 
 **Code coverage without the unnecessary suffering.**
 
