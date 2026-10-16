@@ -1,4 +1,4 @@
-# covr ![](reference/figures/logo.png)
+# covr
 
 **Code coverage without the unnecessary suffering.**
 
@@ -62,8 +62,7 @@ usethis::use_github_action("test-coverage")
 # Usage
 
 For local development a coverage report can be used to inspect coverage
-for each line in your package. *Note* requires the
-[DT](https://github.com/rstudio/DT) package to be installed.
+for each line in your package.
 
 ``` r
 
