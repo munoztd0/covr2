@@ -1,13 +1,12 @@
-# covr <img src="man/figures/logo.png" align="right" />
+# covr 
 
 **Code coverage without the unnecessary suffering.**
 
 <!-- badges: start -->
 
-
 <!-- start badges -->
-[![Check 🛠](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml)
 
+[![Check 🛠](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/munoztd0/covr2/actions/workflows/R-CMD-check.yaml)
 
 ![GitHub forks](https://img.shields.io/github/forks/munoztd0/covr2?style=social)
 ![GitHub repo stars](https://img.shields.io/github/stars/munoztd0/covr2?style=social)
@@ -18,13 +17,12 @@
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/munoztd0/covr2)
 ![GitHub repo size](https://img.shields.io/github/repo-size/munoztd0/covr2)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Current Version](https://img.shields.io/github/r-package/v/munoztd0/covr2/main?color=purple&label=package%20version)](https://github.com/munoztd0/covr2/tree/main)
-[![Open Issues](https://img.shields.io/github/issues-raw/munoztd0/covr2?color=red&label=open%20issues)](https://github.com/munoztd0/covr2/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
+[![Current Version](<https://img.shields.io/github/r-package/v/munoztd0/covr2/main?color=purple&label=package%20version>)](https://github.com/munoztd0/covr2/tree/main)
+[![Open Issues](<https://img.shields.io/github/issues-raw/munoztd0/covr2?color=red&label=open%20issues>)](https://github.com/munoztd0/covr2/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc)
 
 <!-- [![CRAN version](https://www.r-pkg.org/badges/version/covr2)](https://cran.r-project.org/package=covr2) -->
 
 <!-- badges: end -->
-
 
 ## Why covr2?
 
@@ -67,8 +65,7 @@ usethis::use_github_action("test-coverage")
 # Usage
 
 For local development a coverage report can be used to inspect coverage for
-each line in your package. *Note* requires the
-[DT](https://github.com/rstudio/DT) package to be installed.
+each line in your package. 
 
 ```r
 library(covr2)
