@@ -51,7 +51,7 @@ directory and another afternoon wasted.
 install.packages("covr2")
 
 # For devel version
-devtools::install_github("munoztd0/covr22")
+devtools::install_github("munoztd0/covr2")
 ```
 
 ``` r
