@@ -55,7 +55,7 @@ If your tests pass but coverage instrumentation breaks, you should get useful di
 install.packages("covr2")
 
 # For devel version
-devtools::install_github("munoztd0/covr22")
+devtools::install_github("munoztd0/covr2")
 ```
 
 ```r
